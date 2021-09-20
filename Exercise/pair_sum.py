@@ -21,13 +21,13 @@ def sum_1(arr,target):
 
 def sum_2(arr,target):
 
-  complement=[]
+  complement={}
 
   for val in arr:
     if target-val in complement:
       print(val,target-val)
       return True
-    complement.append(val)
+    complement[val]=True
   return False
 
 print(sum_2(z,target))
