@@ -1,2 +1,2 @@
-run="python Data_Structures/Array/merge_sorted.py "
+run="python Data_Structures/Array/max_subarray.py "
 language="python 3"
