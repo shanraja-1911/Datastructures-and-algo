@@ -1,39 +1,39 @@
-# Given an array of integers nums, calculate the pivot index of this array.
+# Find the index in an array where the index == value in the array of sorted distinct numbers
 
-# The pivot index is the index where the sum of all the numbers strictly to the left of the index is equal to the sum of all the numbers strictly to the index's right.
+# Lets start with the basic approach where we go over the array and return the value that meets the index ; 
+# Time complexity O(n)
 
-# If the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array.
+def magic_index(arr):
+  for i in range(len(arr)):
+    if i==arr[i]:
+      return i
+    
+  return -1 
 
-# Return the leftmost pivot index. If no such index exists, return -1.
+# recursion - Binary search tree
+
+def magic_index_rec(arr):
+
+  mid=int(len(arr)/2)
+  print(mid,arr)
+
+  if len(arr)>0:
+    if (arr[mid]==mid):
+      return arr[mid]
+      
+    elif mid>arr[mid]:
+      return magic_index_rec(arr[mid+1:])
+      
+    elif mid<arr[mid]:
+      return magic_index_rec(arr[:mid])
+  
+  return -1 
+
+  
 
 
-class Solution:
-    def pivotIndex(self, nums: List[int]) -> int:
-        len_num=len(nums)
-        if (sum(nums[1:])==0):
-            return 0
 
-        for x in range(1,len_num):
-            #print(nums[:x-1],nums[x:])
-            sum_bef=sum(nums[:x-1])
-            sum_aft=sum(nums[x:])
-            if sum_bef==sum_aft:
-                return x-1
-        
-        if (sum(nums[:len_num-1])==0):
-            return len_num-1
-        
-        return -1
-            
-class Solution:
-    def pivotIndex(self, nums: List[int]) -> int:
-        
-        sum_count=0
-        
-        for x in range(0, len(nums)):
-            if sum_count == sum(nums[x+1:]):
-                return x
-            else :
-                sum_count+=nums[x]
-            
-        return -1
+if __name__=='__main__':
+ #print(magic_index([-1,0,1,2,4,10]))
+  print(magic_index_rec([-1,0,1,2,4,10]))
+  
