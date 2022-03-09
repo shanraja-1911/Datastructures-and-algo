@@ -5,7 +5,7 @@
 #Time complexity is O(n^2) in worst case
 
 
-test=[5,9,3,10,45,2,0]
+test=[0,0,0,-1,2,-1233]
 
 def insertion_sort(nums):
 
@@ -25,6 +25,11 @@ def insertion_sort(nums):
         nums[y-1]=nums[y]
         nums[y]=temp
         y-=1
+
+      # If the number is already in the right place , then we exit
+      elif nums[y]>nums[y-1]:
+        #print('early exit')
+        y=0
 
       else :
         # If the value is not big enough then it shoulf just stay at its place
