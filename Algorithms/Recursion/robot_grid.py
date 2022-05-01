@@ -8,13 +8,15 @@
 
 
 
-# using bottom up approach 
+# using bottom up approach
 def num_path(obst):
   m=len(obst)
   n=len(obst[0])
+
+  # check if the first or the last point is 1
   if (obst[0][0])|(obst[-1][-1])==1:
-    return 0 
-  
+    return 0
+
   dp=[[0 for _ in range(n) ] for _ in range(m)]
   dp[0][0]=1
 
@@ -29,16 +31,16 @@ def num_path(obst):
           dp[x][y]+=dp[x][y-1]
       print(x,y,dp)
   print(dp)
-  
+
   return dp[-1][-1]
 
 
 
-        
+
 
 
 if __name__=='__main__':
   obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
   #obstacleGrid=[[0],[1]]
   print(num_path(obstacleGrid))
-  
+
